@@ -53,7 +53,7 @@ int main() {
     int nx = 200;
     int ny = 100;
     int ns=100;
-    ofstream out("testimgtttttttt.ppm");
+    ofstream out("testimgttttt111111111ttt.ppm");
     out<<"P3\n"<<nx<<" "<<ny<<"\n255\n";
     
     hitable *list[2];
