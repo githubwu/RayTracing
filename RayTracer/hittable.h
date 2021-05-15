@@ -22,7 +22,7 @@ struct hit_record {
     shared_ptr<material> mat_ptr;
     double t;
     bool front_face;
-
+    // 用于玻璃等材质，因为他们既要渲染正面又要渲染背面
     inline void set_face_normal(const ray& r, const vec3& outward_normal) {
         front_face = dot(r.direction(), outward_normal) < 0;
         normal = front_face ? outward_normal :-outward_normal;
