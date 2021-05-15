@@ -23,12 +23,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BC605FC621554DCA0050FE32 /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
-		BC605FC721554DCA0050FE32 /* ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ray.h; sourceTree = "<group>"; };
-		BC605FC8215775DD0050FE32 /* hitable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hitable.h; sourceTree = "<group>"; };
-		BC605FC9215775DD0050FE32 /* sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sphere.h; sourceTree = "<group>"; };
-		BC605FCA21577AF60050FE32 /* hitable_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hitable_list.h; sourceTree = "<group>"; };
 		BC605FCB21578D1C0050FE32 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
+		BC6EC175265026AD006E90E1 /* perlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perlin.h; sourceTree = "<group>"; };
+		BC6EC176265026AD006E90E1 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
+		BC6EC177265026AD006E90E1 /* color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = color.h; sourceTree = "<group>"; };
+		BC6EC178265026AD006E90E1 /* rtweekend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtweekend.h; sourceTree = "<group>"; };
+		BC6EC179265026AD006E90E1 /* ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ray.h; sourceTree = "<group>"; };
+		BC6EC17A265026AD006E90E1 /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
+		BC6EC17B265026AD006E90E1 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
+		BC6EC17D265026AD006E90E1 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		BC6EC17E265026AD006E90E1 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		BC6EC17F265026AD006E90E1 /* rtw_stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtw_stb_image.h; sourceTree = "<group>"; };
+		BC6EC180265026AD006E90E1 /* aabb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aabb.h; sourceTree = "<group>"; };
+		BC6EC18426502CC5006E90E1 /* sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sphere.h; sourceTree = "<group>"; };
+		BC6EC18626502E17006E90E1 /* hittable_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hittable_list.h; sourceTree = "<group>"; };
+		BC6EC18726502E17006E90E1 /* hittable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hittable.h; sourceTree = "<group>"; };
 		BCAA6697215B7FCA00C6A3CE /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = material.h; sourceTree = "<group>"; };
 		BCE0C20B2154E1D700FA1732 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE0C20E2154E1D700FA1732 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -45,6 +54,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC6EC174265026AD006E90E1 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				BC6EC175265026AD006E90E1 /* perlin.h */,
+				BC6EC176265026AD006E90E1 /* camera.h */,
+				BC6EC177265026AD006E90E1 /* color.h */,
+				BC6EC178265026AD006E90E1 /* rtweekend.h */,
+				BC6EC179265026AD006E90E1 /* ray.h */,
+				BC6EC17A265026AD006E90E1 /* vec3.h */,
+				BC6EC17B265026AD006E90E1 /* texture.h */,
+				BC6EC17C265026AD006E90E1 /* external */,
+				BC6EC17F265026AD006E90E1 /* rtw_stb_image.h */,
+				BC6EC180265026AD006E90E1 /* aabb.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		BC6EC17C265026AD006E90E1 /* external */ = {
+			isa = PBXGroup;
+			children = (
+				BC6EC17D265026AD006E90E1 /* stb_image_write.h */,
+				BC6EC17E265026AD006E90E1 /* stb_image.h */,
+			);
+			path = external;
+			sourceTree = "<group>";
+		};
 		BCE0C2022154E1D700FA1732 = {
 			isa = PBXGroup;
 			children = (
@@ -64,13 +99,12 @@
 		BCE0C20D2154E1D700FA1732 /* RayTracer */ = {
 			isa = PBXGroup;
 			children = (
+				BC6EC18626502E17006E90E1 /* hittable_list.h */,
+				BC6EC18726502E17006E90E1 /* hittable.h */,
+				BC6EC18426502CC5006E90E1 /* sphere.h */,
+				BC6EC174265026AD006E90E1 /* common */,
 				BCAA6697215B7FCA00C6A3CE /* material.h */,
 				BC605FCB21578D1C0050FE32 /* camera.h */,
-				BC605FC721554DCA0050FE32 /* ray.h */,
-				BC605FC621554DCA0050FE32 /* vec3.h */,
-				BC605FC9215775DD0050FE32 /* sphere.h */,
-				BC605FC8215775DD0050FE32 /* hitable.h */,
-				BC605FCA21577AF60050FE32 /* hitable_list.h */,
 				BCE0C20E2154E1D700FA1732 /* main.cpp */,
 			);
 			path = RayTracer;
