@@ -134,6 +134,8 @@ inline vec3 random_in_unit_disk() {
     }
 }
 
+// target = rec.p + rec.normal + random_in_unit_sphere()
+// 这种采样方式在漫反射中会导致反射光线更有可能靠近法线方向，他们分布函数是cos^3(fi)
 inline vec3 random_in_unit_sphere() {
     while (true) {
         auto p = vec3::random(-1,1);
@@ -143,7 +145,8 @@ inline vec3 random_in_unit_sphere() {
     }
 }
 
-// True Lambertian Reflection 为啥这种分布更加均匀？
+// target = rec.p + rec.normal + random_unit_vector()
+// 分布更加均匀，cos(fi)
 inline vec3 random_unit_vector() {
     return unit_vector(random_in_unit_sphere());
 }
