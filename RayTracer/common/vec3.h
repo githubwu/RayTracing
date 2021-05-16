@@ -137,11 +137,13 @@ inline vec3 random_in_unit_disk() {
 inline vec3 random_in_unit_sphere() {
     while (true) {
         auto p = vec3::random(-1,1);
+        // rejection method 拒绝采样，即不满足条件重新采样
         if (p.length_squared() >= 1) continue;
         return p;
     }
 }
 
+// True Lambertian Reflection 为啥这种分布更加均匀？
 inline vec3 random_unit_vector() {
     return unit_vector(random_in_unit_sphere());
 }

@@ -32,11 +32,11 @@ class sphere : public hittable {
         shared_ptr<material> mat_ptr;
 };
 
-
+// 由于精度问题，如果t_min=0，有些反射光线会击中自己，所以t_min = 0.001 防止光线与自己相交
 bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
     vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();
-    auto half_b = dot(oc, r.direction());
+    auto half_b = dot(oc, r.direction());   // b = 2h 二元一次方程优化方法
     auto c = oc.length_squared() - radius*radius;
 
     auto discriminant = half_b*half_b - a*c;
