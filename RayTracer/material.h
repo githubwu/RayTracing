@@ -102,6 +102,7 @@ class dielectric : public material {
         double ir; // Index of Refraction
 
     private:
+        // 静态成员函数即使在类对象不存在的情况下也能被调用
         static double reflectance(double cosine, double ref_idx) {
             // Use Schlick's approximation for reflectance.
             auto r0 = (1-ref_idx) / (1+ref_idx);    // 菲涅尔F0的近似方法
