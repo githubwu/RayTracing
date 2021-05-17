@@ -29,11 +29,13 @@ class camera {
             double _time0 = 0,
             double _time1 = 0
         ) {
+            // 所以fov也可以达到缩放的效果
             auto theta = degrees_to_radians(vfov);
             auto h = tan(theta/2);
             auto viewport_height = 2.0 * h;
             auto viewport_width = aspect_ratio * viewport_height;
 
+            // 施密特正交化
             w = unit_vector(lookfrom - lookat);
             u = unit_vector(cross(vup, w));
             v = cross(w, u);
@@ -46,6 +48,27 @@ class camera {
             lens_radius = aperture / 2;
             time0 = _time0;
             time1 = _time1;
+        }
+        camera(
+               point3 lookfrom,
+               point3 lookat,
+               vec3   vup,
+            double vfov, // vertical field-of-view in degrees
+            double aspect_ratio
+        ) {
+            auto theta = degrees_to_radians(vfov);
+            auto h = tan(theta/2);
+            auto viewport_height = 2.0 * h;
+            auto viewport_width = aspect_ratio * viewport_height;
+
+            auto w = unit_vector(lookfrom - lookat);
+            auto u = unit_vector(cross(vup, w));
+            auto v = cross(w, u);
+
+            origin = lookfrom;
+            horizontal = viewport_width * u;
+            vertical = viewport_height * v;
+            lower_left_corner = origin - horizontal/2 - vertical/2 - w;
         }
 
         ray get_ray(double s, double t) const {

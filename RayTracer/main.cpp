@@ -10,6 +10,7 @@
 #include "hittable_list.h"
 #include "material.h"
 #include "sphere.h"
+#include "camera.h"
 #include <iostream>
 #include <fstream>
 #include "vec3.h"
@@ -17,22 +18,6 @@
 
 using namespace std;
 
-class camera{
-public:
-    camera(){
-        lower_left_corner=vec3(-2.0,-1.0,-1.0);
-        horizontal=vec3(4.0,0.0,0.0);
-        vertical=vec3(0.0,2.0,0.0);
-        origin=vec3(0.0,0.0,0.0);
-    }
-    ray get_ray(float u,float v){
-        return ray(origin, lower_left_corner+u*horizontal+v*vertical-origin);
-    }
-    vec3 lower_left_corner;
-    vec3 horizontal;
-    vec3 vertical;
-    vec3 origin;
-};
 
 double hit_sphere(const point3& center, double radius, const ray& r) {
     vec3 oc = r.origin() - center;
@@ -75,23 +60,27 @@ int main() {
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
     const int image_height = static_cast<int>(image_width / aspect_ratio);
-    const int samples_per_pixel = 70;
-    const int max_depth = 50;
+    const int samples_per_pixel = 30;
+    const int max_depth = 30;
     // World
+    auto R = cos(pi/4);
     hittable_list world;
+
     auto material_ground = make_shared<lambertian>(color(0.8, 0.8, 0.0));
     auto material_center = make_shared<lambertian>(color(0.1, 0.2, 0.5));
     auto material_left   = make_shared<dielectric>(1.5);
     auto material_right  = make_shared<metal>(color(0.8, 0.6, 0.2), 0.0);
+
     world.add(make_shared<sphere>(point3( 0.0, -100.5, -1.0), 100.0, material_ground));
     world.add(make_shared<sphere>(point3( 0.0,    0.0, -1.0),   0.5, material_center));
     world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0),   0.5, material_left));
-    world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0),  -0.4, material_left));
+    world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0), -0.45, material_left));
     world.add(make_shared<sphere>(point3( 1.0,    0.0, -1.0),   0.5, material_right));
+
     // Camera
-    camera cam;
+    camera cam(point3(-2,2,1), point3(0,0,-1), vec3(0,1,0), 40, aspect_ratio);
     
-    ofstream out("/Users/bytedance/Desktop/doing/tes1111t.ppm");
+    ofstream out("/Users/wujy/Desktop/RenderingResource/RayTracing/tes1111t.ppm");
     out<<"P3\n"<<image_width<<" "<<image_height<<"\n255\n";
     // Render
 
