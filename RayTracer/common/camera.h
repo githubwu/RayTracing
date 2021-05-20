@@ -49,6 +49,7 @@ class camera {
             time0 = _time0;
             time1 = _time1;
         }
+        // just for my test
         camera(
                point3 lookfrom,
                point3 lookat,
@@ -73,7 +74,7 @@ class camera {
 
         ray get_ray(double s, double t) const {
             vec3 rd = lens_radius * random_in_unit_disk();
-            vec3 offset = u * rd.x() + v * rd.y();
+            vec3 offset = u * rd.x() + v * rd.y();  // 从针孔相机模型变成了光圈相机模型，原点变成了光圈范围内的一个点，因此从光圈内发射射线追踪
             return ray(
                 origin + offset,
                 lower_left_corner + s*horizontal + t*vertical - origin - offset,
