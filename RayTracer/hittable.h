@@ -23,6 +23,9 @@ struct hit_record {
     vec3 normal;
     shared_ptr<material> mat_ptr;
     double t;
+    // 纹理坐标 uv
+    double u;
+    double v;
     bool front_face;
     // 用于玻璃等材质，因为他们既要渲染正面又要渲染背面
     inline void set_face_normal(const ray& r, const vec3& outward_normal) {
