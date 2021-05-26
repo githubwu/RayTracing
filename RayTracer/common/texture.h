@@ -18,7 +18,9 @@
 
 #include <iostream>
 
-
+// texture 的定义，改变了我看待纹理的角度
+// A texture in graphics usually means a function that makes the colors on a surface procedural.
+// This procedure can be synthesis code, or it could be an image lookup, or a combination of both.
 class texture  {
     public:
         virtual color value(double u, double v, const vec3& p) const = 0;
@@ -53,7 +55,7 @@ class checker_texture : public texture {
             : even(make_shared<solid_color>(c1)) , odd(make_shared<solid_color>(c2)) {}
 
         virtual color value(double u, double v, const vec3& p) const override {
-            auto sines = sin(10*p.x())*sin(10*p.y())*sin(10*p.z());
+            auto sines = sin(3*p.x())*sin(3*p.y())*sin(3*p.z());
             if (sines < 0)
                 return odd->value(u, v, p);
             else

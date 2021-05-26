@@ -51,7 +51,7 @@ class lambertian : public material {
     public:
 //        color albedo;
     // 把单一颜色改成纹理
-    shared_ptr<texture> albedo;
+        shared_ptr<texture> albedo;
 };
 
 
