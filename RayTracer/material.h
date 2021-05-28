@@ -123,6 +123,7 @@ class dielectric : public material {
         }
 };
 
+// 光源也是材质
 class diffuse_light : public material  {
     public:
         diffuse_light(shared_ptr<texture> a) : emit(a) {}

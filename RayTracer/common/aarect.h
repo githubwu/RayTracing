@@ -83,7 +83,7 @@ class yz_rect : public hittable {
 };
 
 bool xy_rect::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
-    auto t = (k-r.origin().z()) / r.direction().z();
+    auto t = (k-r.origin().z()) / r.direction().z();  // 万一结果是0咋办？c++ 返回啥？
     if (t < t_min || t > t_max)
         return false;
 

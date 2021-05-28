@@ -115,8 +115,25 @@ hittable_list simple_light() {
     objects.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(pertext)));
     objects.add(make_shared<sphere>(point3(0,2,0), 2, make_shared<lambertian>(pertext)));
 
-    auto difflight = make_shared<diffuse_light>(color(4,4,4));
+    auto difflight = make_shared<diffuse_light>(color(10,4,4));
     objects.add(make_shared<xy_rect>(3, 5, 1, 3, -2, difflight));
+
+    return objects;
+}
+hittable_list cornell_box() {
+    hittable_list objects;
+
+    auto red   = make_shared<lambertian>(color(.65, .05, .05));
+    auto white = make_shared<lambertian>(color(.73, .73, .73));
+    auto green = make_shared<lambertian>(color(.12, .45, .15));
+    auto light = make_shared<diffuse_light>(color(15, 15, 15));
+
+    objects.add(make_shared<yz_rect>(0, 555, 0, 555, 555, green));
+    objects.add(make_shared<yz_rect>(0, 555, 0, 555, 0, red));
+    objects.add(make_shared<xz_rect>(213, 343, 227, 332, 554, light));
+    objects.add(make_shared<xz_rect>(0, 555, 0, 555, 0, white));
+    objects.add(make_shared<xz_rect>(0, 555, 0, 555, 555, white));
+    objects.add(make_shared<xy_rect>(0, 555, 0, 555, 555, white));
 
     return objects;
 }
@@ -160,7 +177,7 @@ int main() {
     auto aperture = 0.0;
     color background(0,0,0);
 
-    switch (2) {
+    switch (0) {
         case 1:
             world = random_scene();
             background = color(0.70, 0.80, 1.00);
@@ -191,15 +208,25 @@ int main() {
             lookat = point3(0,0,0);
             vfov = 20.0;
             break;
-        default:
-         case 5:
+        case 5:
             world = simple_light();
             samples_per_pixel = 400;
             background = color(0,0,0);
             lookfrom = point3(26,3,6);
             lookat = point3(0,2,0);
             vfov = 20.0;
-             break;
+            break;
+        default:
+        case 6:
+            world = cornell_box();
+            aspect_ratio = 1.0;
+            image_width = 600;
+            samples_per_pixel = 200;
+            background = color(0,0,0);
+            lookfrom = point3(278, 278, -800);
+            lookat = point3(278, 278, 0);
+            vfov = 40.0;
+            break;
     }
     
     // Camera
